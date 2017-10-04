@@ -14,6 +14,7 @@
 		103E1FF71F7D507E002F1F9D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 103E1FF51F7D507E002F1F9D /* LaunchScreen.storyboard */; };
 		103E20001F7D50D5002F1F9D /* AxesDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103E1FFF1F7D50D5002F1F9D /* AxesDrawer.swift */; };
 		103E20021F7D6C72002F1F9D /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103E20011F7D6C72002F1F9D /* GraphView.swift */; };
+		107E05931F8577AE00CA4522 /* GraphViewDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E05921F8577AE00CA4522 /* GraphViewDataSourceProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		103E1FF81F7D507E002F1F9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		103E1FFF1F7D50D5002F1F9D /* AxesDrawer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AxesDrawer.swift; sourceTree = "<group>"; };
 		103E20011F7D6C72002F1F9D /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		107E05921F8577AE00CA4522 /* GraphViewDataSourceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphViewDataSourceProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				103E1FFF1F7D50D5002F1F9D /* AxesDrawer.swift */,
 				103E1FEE1F7D507E002F1F9D /* GraphViewController.swift */,
 				103E20011F7D6C72002F1F9D /* GraphView.swift */,
+				107E05921F8577AE00CA4522 /* GraphViewDataSourceProtocol.swift */,
 				103E1FF01F7D507E002F1F9D /* Main.storyboard */,
 				103E1FFE1F7D5092002F1F9D /* Supporting Files */,
 			);
@@ -155,6 +158,7 @@
 				103E1FED1F7D507E002F1F9D /* AppDelegate.swift in Sources */,
 				103E20001F7D50D5002F1F9D /* AxesDrawer.swift in Sources */,
 				103E20021F7D6C72002F1F9D /* GraphView.swift in Sources */,
+				107E05931F8577AE00CA4522 /* GraphViewDataSourceProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +324,7 @@
 				103E1FFD1F7D507E002F1F9D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

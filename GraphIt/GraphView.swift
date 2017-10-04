@@ -20,7 +20,9 @@ class GraphView: UIView {
     var origin: CGPoint = CGPoint(x: 0.0, y: 0.0) { didSet { setNeedsDisplay() } }
     
     @IBInspectable
-    var lineWidth: CGFloat = 3.0 { didSet { setNeedsDisplay() } }
+    var lineWidth: CGFloat = 2.0 { didSet { setNeedsDisplay() } }
+    
+    var dataSource: GraphViewDataSource? = nil
     
     private var axesDrawer = AxesDrawer()
     
@@ -62,43 +64,31 @@ class GraphView: UIView {
     }
     //
     
-    private func viewCoorinate(for point: CGPoint, in rect:CGRect) -> CGPoint {
-        let xInView = origin.x + (point.x * scale)
-        let yInView = origin.y - (point.y * scale)
-        return CGPoint(x: xInView, y: yInView)
+    private func pointOnGraph(correspondingTo xInViewCoordinates: CGFloat) -> CGPoint {
+        let xInGraphCoordinates = (-origin.x + xInViewCoordinates) / scale
+        let yInGraphCoordinates = CGFloat(dataSource!.yValue(for: Double(xInGraphCoordinates)))
+        
+        let yInViewCoordinates = origin.y - (yInGraphCoordinates * scale)
+        
+        return CGPoint(x: xInViewCoordinates, y: yInViewCoordinates)
     }
     
     private func drawGraph(in rect: CGRect) -> UIBezierPath {
-        let minXValue: CGFloat = -origin.x / scale
-        let maxXValue: CGFloat = (rect.maxX - origin.x) / scale
-        
-        let minYValue: CGFloat = (origin.y - rect.maxY) / scale
-        let maxYValue: CGFloat = -origin.y / scale
-        
-        print("min X Value = \(minXValue)")
-        print("max X Value = \(maxXValue)")
-        
-        // one step corresponds to advancing one pixel on x-axis
-        let stepSize: CGFloat = (1 / contentScaleFactor) / scale
-        
-        func yValue(for xValue: CGFloat) -> CGFloat {
-            return cos(xValue)
-        }
-        
-        var x = minXValue
-        var y = yValue(for: x)
+        let numberOfPixelsOnXAxis = Int(rect.width * contentScaleFactor)
+        let stepSizeInPoints = 1 / contentScaleFactor // one pixel = 1/contentScaleFactor points
         
         let graph = UIBezierPath()
         graph.lineWidth = lineWidth
-        let startPoint = CGPoint(x: x, y: y)
-        graph.move(to: viewCoorinate(for: startPoint, in: rect))
-        repeat {
-            x = x + stepSize
-            y = yValue(for: x)
-            let nextPoint = CGPoint(x: x, y: y)
-            graph.addLine(to: viewCoorinate(for: nextPoint, in: rect))
-        } while x <= maxXValue
+        let startPoint = pointOnGraph(correspondingTo: 0)
+        graph.move(to: startPoint)
         
+        for pixelCount in 1...numberOfPixelsOnXAxis {
+            let xInViewCoordinates = stepSizeInPoints * CGFloat(pixelCount)
+            let nextPoint = pointOnGraph(correspondingTo: xInViewCoordinates)
+            graph.addLine(to: nextPoint)
+            
+        }
+
         return graph
     }
     
@@ -112,7 +102,7 @@ class GraphView: UIView {
         let graph = drawGraph(in: rect)
         axesDrawer.contentScaleFactor = contentScaleFactor
         axesDrawer.drawAxes(in: rect, origin: origin, pointsPerUnit: scale)
-        UIColor.blue.set()
+        UIColor.red.set()
         graph.stroke()
     }
 
