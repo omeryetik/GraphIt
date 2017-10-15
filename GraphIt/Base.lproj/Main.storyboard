@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Mfj-hG-L1P" customClass="GraphView" customModule="GraphIt" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="37h-q5-0Of" customClass="GraphView" customModule="GraphIt" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
@@ -33,19 +33,19 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Mfj-hG-L1P" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="JEj-MB-iiz"/>
-                            <constraint firstAttribute="trailing" secondItem="Mfj-hG-L1P" secondAttribute="trailing" id="OPj-Pp-zgF"/>
-                            <constraint firstItem="Mfj-hG-L1P" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="pAE-hP-Tjx"/>
-                            <constraint firstItem="Mfj-hG-L1P" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="tuW-vp-jsy"/>
+                            <constraint firstItem="37h-q5-0Of" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="2TE-4A-a2H"/>
+                            <constraint firstItem="37h-q5-0Of" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9xO-yu-AMg"/>
+                            <constraint firstAttribute="trailing" secondItem="37h-q5-0Of" secondAttribute="trailing" id="AVx-eg-Dfc"/>
+                            <constraint firstItem="37h-q5-0Of" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="PpL-as-MxL"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="graphView" destination="Mfj-hG-L1P" id="HGQ-5w-Te2"/>
+                        <outlet property="graphView" destination="37h-q5-0Of" id="ApL-l8-2wO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="94" y="29"/>
+            <point key="canvasLocation" x="93.599999999999994" y="28.335832083958024"/>
         </scene>
     </scenes>
 </document>

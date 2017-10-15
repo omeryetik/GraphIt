@@ -62,12 +62,16 @@ class GraphView: UIView {
             }
         }
     }
-    //
     
     private func pointOnGraph(correspondingTo xInViewCoordinates: CGFloat) -> CGPoint {
         let xInGraphCoordinates = (-origin.x + xInViewCoordinates) / scale
-        let yInGraphCoordinates = CGFloat(dataSource!.yValue(for: Double(xInGraphCoordinates)))
-        
+        let yInGraphCoordinates: CGFloat
+        // value assigned using the if let construct below to avoid crashing in live view on Storyboard
+        if let doubleYValue = dataSource?.yValue(for: Double(xInGraphCoordinates)) {
+            yInGraphCoordinates = CGFloat(doubleYValue)
+        } else {
+            yInGraphCoordinates = 0.0
+        }
         let yInViewCoordinates = origin.y - (yInGraphCoordinates * scale)
         
         return CGPoint(x: xInViewCoordinates, y: yInViewCoordinates)
@@ -97,8 +101,6 @@ class GraphView: UIView {
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
         // Drawing code
-        print("There are \(self.contentScaleFactor) pixels per point")
-        print(rect)
         let graph = drawGraph(in: rect)
         axesDrawer.contentScaleFactor = contentScaleFactor
         axesDrawer.drawAxes(in: rect, origin: origin, pointsPerUnit: scale)
